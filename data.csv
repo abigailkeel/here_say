@@ -1,5 +1,6 @@
-plant,id
-apple,1
-orange,2
-tomato,3
-tree,4
+plant,id,lat,lon
+apple,1,38.946286,-92.328677
+orange,2,38.997286,-92.338677
+tomato,3,38.916286,-92.320677
+tree,4,38.926186,-92.328177
+flower,7,38.948286,-92.324677

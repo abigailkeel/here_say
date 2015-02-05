@@ -6,6 +6,7 @@
 	<!--leaflet-->
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<!--jQuery CSV plugin-->
 	<script src="js/jquery.csv-0.71.min.js"></script>
 	<!--my style sheet-->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -42,38 +43,28 @@
 				 }).addTo(map);
 
 
+	$.get('data.csv', function(data) {
 
+		var my_csv = $.csv.toObjects(data);
 
+		for (var i=0; i<my_csv.length; i++) {
 
+			var lat = my_csv[i].lat;
+			var lon = my_csv[i].lon;
 
-
-
-	var max =['1','2','3','4'];
-
-	for (var i=0; i<max.length; i++) {
-
-		var lat = 38.946286;
-		var lon = -92.328677;
+			var marker = L.marker([lat, lon], {
+						title: my_csv[i].plant
+					 }).addTo(map);
 		
-		lat = lat + i;
-		lon = lon + i;
+			marker.on('click', function(e) {
+				var text = this.options.title;
+				var my_html = '<li class="list_item">'+text+'</li>';
+				$('#list').html(my_html);
+			});
+			
+		}
 
-		var marker = L.marker([lat, lon], {
-					title: max[i]
-				 }).addTo(map);
-	
-		marker.on('click', function(e) {
-			var text = this.options.title;
-			var my_html = '<li class="list_item">'+text+'</li>';
-			$('#list').html(my_html);
-		});
-		
-	}
-
-
-	// $.get('data.csv', function(data) {
-	// 	console.log(data);
-	// });
+	});
 
 </script>
 </html>
