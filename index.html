@@ -8,8 +8,18 @@
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 	<!--jQuery CSV plugin-->
 	<script src="js/jquery.csv-0.71.min.js"></script>
+	<!-- Leaflet MarkerCluster plugin -->
+	<link rel="stylesheet" href="css/MarkerCluster.Default.css" />
+	<link rel="stylesheet" href="css/MarkerCluster.css" />
+	<script src="js/leaflet.markercluster.js"></script>
+
+	<!--TabletopJS plugin-->
+	<script src="js/tabletop.js"></script>
+
 	<!--my style sheet-->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+
 
 </head>
 <body>
@@ -28,43 +38,72 @@
 </body>
 
 <script type="text/javascript">
+	var global;
 
-	var map = L.map('map').setView([38.946286, -92.328677], 6);
+	Tabletop.init({
+		key: '1FJUJVi6gM-Ese7-RnEyDQHcR1u2uKlnoOFowGEf89vg',
+		callback: function(data, tabletop){
 
-	L.tileLayer('http://{s}.tile.openstreetmap.com/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-			subdomians: 'abcd',
-			minZoom:0,
-			maxZoom:20
-	}).addTo(map);
-
-	var marker = L.marker([38.946286, -92.328677], {
-					title: 'Hello!'
-				 }).addTo(map);
-
-
-	$.get('data.csv', function(data) {
-
-		var my_csv = $.csv.toObjects(data);
-
-		for (var i=0; i<my_csv.length; i++) {
-
-			var lat = my_csv[i].lat;
-			var lon = my_csv[i].lon;
-
-			var marker = L.marker([lat, lon], {
-						title: my_csv[i].plant
-					 }).addTo(map);
-		
-			marker.on('click', function(e) {
-				var text = this.options.title;
-				var my_html = '<li class="list_item">'+text+'</li>';
-				$('#list').html(my_html);
+			global = data;
+			var map = L.map('map',{
+				center: [38.946286, -92.328677],
+				zoom: 14,
+				maxZoom: 16,
+				minZoom: 14
 			});
-			
-		}
 
+			L.tileLayer('http://{s}.tile.openstreetmap.com/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+					subdomians: 'abcd',
+			}).addTo(map);
+
+			var markers = new L.MarkerClusterGroup({
+				spiderfyOnMaxZoom: true,
+				spiderfyDistanceMultiplier: 4,
+				showCoverageOnHover: false,
+
+			});
+
+
+
+			for (var i=0; i<data.length; i++) {
+
+				var lat = data[i].Lat;
+				var lon = data[i].Lon;
+
+				var marker = L.marker([lat, lon], {
+							title: null
+						 });
+
+				console.log(data[i].Story);
+			
+				marker.on('click', function(e) {
+					console.log(this);
+					var text = global[i].Story;
+					var my_html = '<li class="list_item">'+text+'</li>';
+					$('#list').html(my_html);
+				});
+				
+				markers.addLayer(marker);
+			}
+
+			map.addLayer(markers);	
+
+
+	
+
+
+
+
+
+		},
+		simpleSheet: true
 	});
+
+
+
+
+	
 
 </script>
 </html>
