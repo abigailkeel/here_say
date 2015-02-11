@@ -16,35 +16,41 @@
 	<!--TabletopJS plugin-->
 	<script src="js/tabletop.js"></script>
 
+	<!--Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 	<!--my style sheet-->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
-
-
 </head>
 <body>
-	<div class="container">
-		<div id="title" class="absolute">
-			Here Say - Map
-		</div>
+	<div class="cont">
 		<div id="info" class="absolute">
+			<div class='container'>
+				<h2 class='center'>Headline</h2>
+				
+				<div class="panel panel-success">
+					<div class="panel-heading">Panel title</div>
+					<div class="panel-body">
+						Panel content
+					</div>
+				</div>
+
+			</div>
 			<ul id="list"></ul>
 			<p>Here's some information</p>
 		</div>
 		<div id="map"></div>
 	</div>
-	
-
 </body>
 
 <script type="text/javascript">
-	var global;
 
 	Tabletop.init({
 		key: '1FJUJVi6gM-Ese7-RnEyDQHcR1u2uKlnoOFowGEf89vg',
 		callback: function(data, tabletop){
 
-			global = data;
 			var map = L.map('map',{
 				center: [38.946286, -92.328677],
 				zoom: 14,
@@ -64,37 +70,51 @@
 
 			});
 
-
-
 			for (var i=0; i<data.length; i++) {
 
 				var lat = data[i].Lat;
 				var lon = data[i].Lon;
 
+// Delete this dummy URL and get a proper one in, for users with no image
+				if (data[i].Image == "") {
+					data[i].Image = 'http://concentricsky.com/static/img/no-user-photo.png'
+				}
+
+				var marker_face_icon = L.icon({
+					iconUrl: data[i].Image,
+					iconSize: [40, 40],
+					iconAnchor: [20, 20]
+				});
+
 				var marker = L.marker([lat, lon], {
-							title: null
+							title: null,
+							icon: marker_face_icon
 						 });
 
-				console.log(data[i].Story);
+				marker.Story = data[i].Story;
+				marker.Soundcloud = data[i].Soundcloud;
+				marker.Headline = data[i].Headline;
 			
 				marker.on('click', function(e) {
-					console.log(this);
-					var text = global[i].Story;
-					var my_html = '<li class="list_item">'+text+'</li>';
+					var text = this.Story;
+					var sc = this.Soundcloud;
+					var my_html = '<li class="list_item">'+text+'</li><li>'+sc+'</li>';
 					$('#list').html(my_html);
 				});
 				
 				markers.addLayer(marker);
 			}
 
-			map.addLayer(markers);	
+			markers.on('clusterclick', function(a){
+				var markers = a.layer.getAllChildMarkers();
+				$('#list').html('');
+				$.each(markers, function(index, marker){
+					$('#list').append('<li class="list_item">'+this.Headline+'</li>')
+				});
+				
+			});
 
-
-	
-
-
-
-
+			map.addLayer(markers);
 
 		},
 		simpleSheet: true

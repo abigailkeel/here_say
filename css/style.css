@@ -13,13 +13,17 @@
 	border: 1px solid lightgrey;
 }
 
-#title {
-	right: 30px;
-	top: 30px;
-}
-
 #info {
 	right: 30px;
-	top: 100px;
-	height:500px;
+	top: 30px;
+	min-height:500px;
+	width: 30%;
+}
+
+.container {
+	width: 100%;
+}
+
+.center {
+	text-align: center;
 }
