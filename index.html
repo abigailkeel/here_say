@@ -20,6 +20,12 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+	<!--Twitter Follow Button script-->
+	<script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
+
+	<!--Instagram Follow Button script-->
+	<script>(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src="http://instagramfollowbutton.com/components/instagram/v2/js/ig-follow.js";s.parentNode.insertBefore(g,s);}(document,"script"));</script>
+
 	<!--my style sheet-->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -28,18 +34,23 @@
 	<div class="cont">
 		<div id="info" class="absolute">
 			<div class='container'>
-				<h2 class='center'>Headline</h2>
-				
-				<div class="panel panel-success">
-					<div class="panel-heading">Panel title</div>
-					<div class="panel-body">
-						Panel content
-					</div>
-				</div>
+			<img> </img>
+			<div class='socialbutton'>
+				<a class="twitter-follow-button"
+  				href="https://twitter.com/heresaykbia"
+  				data-show-count="false"
+  				data-size="medium"
+  				data-lang="en">
+				Follow @heresaykbia
+				</a></div>
+			<div id='instagram' class='socialbutton'>
+				<span class="ig-follow" data-id="10c749d" data-count="false" data-size="medium" data-username="true"></span>
+			</div>
+
+			<ul id="list"></ul>
+			 <p>Here's some information</p>
 
 			</div>
-			<ul id="list"></ul>
-			<p>Here's some information</p>
 		</div>
 		<div id="map"></div>
 	</div>

@@ -17,9 +17,23 @@
 	right: 30px;
 	top: 30px;
 	min-height:500px;
-	width: 30%;
+	width: 35%;
+	min-width: 300px;
 }
 
+@media (max-width: 800px) {
+
+	#info {
+		margin-top: 170px; 
+		right: 0;
+		bottom: 0;
+		width: 100%;
+	}
+	#map {
+		height: 200px;
+	}
+
+}
 .container {
 	width: 100%;
 }
@@ -27,3 +41,21 @@
 .center {
 	text-align: center;
 }
+
+.ul {
+ 	list-style: none;
+ }
+
+ .li {
+ 	list-style: none;
+ }
+
+ .socialbutton {
+ 	float: left;
+ 	margin-right: auto;
+ 	margin-left: auto;
+ }
+
+ #instagram {
+ 	margin-left: 5px;
+ }
