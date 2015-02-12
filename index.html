@@ -34,22 +34,26 @@
 	<div class="cont">
 		<div id="info" class="absolute">
 			<div class='container'>
-			<img> </img>
-			<div class='socialbutton'>
-				<a class="twitter-follow-button"
-  				href="https://twitter.com/heresaykbia"
-  				data-show-count="false"
-  				data-size="medium"
-  				data-lang="en">
-				Follow @heresaykbia
-				</a></div>
-			<div id='instagram' class='socialbutton'>
-				<span class="ig-follow" data-id="10c749d" data-count="false" data-size="medium" data-username="true"></span>
-			</div>
-
+			<img src="images/logo1.jpeg"> 
+			<div id='location'> </div>
 			<ul id="list"></ul>
 			 <p>Here's some information</p>
 
+			 
+
+		<div class='buttons'>	 
+			<div class='buttons' id='center'>
+				<div class='socialbutton'>
+				<a class="twitter-follow-button"
+  				href="https://twitter.com/heresaykbia" data-show-count="false" data-size="medium" data-lang="en"> Follow @heresaykbia
+				</a>
+				</div>
+				<div id='instagram' class='socialbutton'>
+				<span class="ig-follow" data-id="10c749d" data-count="false" data-size="medium" data-username="true"></span>
+				</div>	
+
+			</div>
+			</div>
 			</div>
 		</div>
 		<div id="map"></div>
@@ -90,7 +94,7 @@
 				if (data[i].Image == "") {
 					data[i].Image = 'http://concentricsky.com/static/img/no-user-photo.png'
 				}
-
+				console.log(data[i].Image)
 				var marker_face_icon = L.icon({
 					iconUrl: data[i].Image,
 					iconSize: [40, 40],
@@ -104,7 +108,8 @@
 
 				marker.Story = data[i].Story;
 				marker.Soundcloud = data[i].Soundcloud;
-				marker.Headline = data[i].Headline;
+				marker.Name = data[i].Name;
+				marker.Place = data[i].Place;
 			
 				marker.on('click', function(e) {
 					var text = this.Story;
@@ -117,11 +122,15 @@
 			}
 
 			markers.on('clusterclick', function(a){
+
 				var markers = a.layer.getAllChildMarkers();
 				$('#list').html('');
+				var location; 
 				$.each(markers, function(index, marker){
-					$('#list').append('<li class="list_item">'+this.Headline+'</li>')
+					location = this.Place
+					$('#list').append('<li class="list_item">'+this.Name+'</li>')
 				});
+				$('#location').html(location)
 				
 			});
 

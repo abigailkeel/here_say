@@ -46,7 +46,7 @@
  	list-style: none;
  }
 
- .li {
+ #li {
  	list-style: none;
  }
 
@@ -59,3 +59,16 @@
  #instagram {
  	margin-left: 5px;
  }
+
+ .buttons {
+ 	width: 100%;
+ }
+#center {
+	margin: 0 auto;
+}
+
+#location{
+
+}
+
+
