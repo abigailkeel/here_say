@@ -1,149 +1,184 @@
 <html>
 <head>
-	<title>Here Say</title>
-	<!--jquery-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<!--leaflet-->
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-	<!--jQuery CSV plugin-->
-	<script src="js/jquery.csv-0.71.min.js"></script>
-	<!-- Leaflet MarkerCluster plugin -->
-	<link rel="stylesheet" href="css/MarkerCluster.Default.css" />
-	<link rel="stylesheet" href="css/MarkerCluster.css" />
-	<script src="js/leaflet.markercluster.js"></script>
+  <title>Here Say</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!--leaflet-->
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <!--jQuery CSV plugin-->
+  <script src="js/jquery.csv-0.71.min.js"></script>
+  <!-- Leaflet MarkerCluster plugin -->
+  <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="css/MarkerCluster.css" />
+  <script src="js/leaflet.markercluster.js"></script>
 
-	<!--TabletopJS plugin-->
-	<script src="js/tabletop.js"></script>
+  <!--TabletopJS plugin-->
+  <script src="js/tabletop.js"></script>
 
-	<!--Bootstrap-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-	<!--Twitter Follow Button script-->
-	<script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
+  <!--Twitter Follow Button script-->
+  <script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
 
-	<!--Instagram Follow Button script-->
-	<script>(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src="http://instagramfollowbutton.com/components/instagram/v2/js/ig-follow.js";s.parentNode.insertBefore(g,s);}(document,"script"));</script>
+  <!--Instagram Follow Button script-->
+  <script>(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src="http://instagramfollowbutton.com/components/instagram/v2/js/ig-follow.js";s.parentNode.insertBefore(g,s);}(document,"script"));</script>
 
-	<!--my style sheet-->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+  <!--my style sheet-->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 <body>
-	<div class="cont">
-		<div id="info" class="absolute">
-			<div class='container'>
-			<img src="images/logo1.jpeg"> 
-			<div id='location'> </div>
-			<ul id="list"></ul>
-			 <p>Here's some information</p>
 
-			 
+  <div id="page" class="page absolute">
 
-		<div class='buttons'>	 
-			<div class='buttons' id='center'>
-				<div class='socialbutton'>
-				<a class="twitter-follow-button"
-  				href="https://twitter.com/heresaykbia" data-show-count="false" data-size="medium" data-lang="en"> Follow @heresaykbia
-				</a>
-				</div>
-				<div id='instagram' class='socialbutton'>
-				<span class="ig-follow" data-id="10c749d" data-count="false" data-size="medium" data-username="true"></span>
-				</div>	
+  	<div id="top" class="div_list">
+  	  <div id="logo"><img id="heresay_logo_img" src="images/logo1.jpeg" /></div>
+  	  <div id="corner">
+  	  </div>
+  	</div>
+  	
+  	<div id = "subhead" class="div_list">
+  	  <div id="desc">
 
-			</div>
-			</div>
-			</div>
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		    <h5>Location description is here</h5>
+		  </div>
 		</div>
-		<div id="map"></div>
-	</div>
+
+  	  </div>
+  	</div>
+
+  	<div id="main_body" class="div_list">
+
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		    <h3>Stories</h3>
+		    <div id="stories_list">
+		    	<table class="real_stories_list"></table>
+		    </div>
+		  </div>
+		</div>
+
+  	</div>
+
+  </div>
+
+
+
+  <div id="home_page" class="page absolute">
+  	<div class="div_list" id="kbia_logo">KBIA Logo placegolder</div>
+  	<div class="div_list" id="heresay_logo">
+  	  <img id="heresay_logo_img" src="images/logo1.jpeg" />
+  	</div>
+  	<div class="div_list" id="project_desc">Description</div>
+  	<div class="div_list" id="social_btns">
+  	  <a class="twitter-follow-button" href="https://twitter.com/heresaykbia" data-show-count="false" data-size="medium" data-lang="en">Follow @heresaykbia</a>
+  	  <span class="ig-follow" data-id="10c749d" data-count="false" data-size="medium" data-username="true"></span>
+  	</div>
+  	<div class="div_list" id="byline">Byline text</div>
+  </div>
+
+  <div id="map"></div>
+
 </body>
 
 <script type="text/javascript">
 
-	Tabletop.init({
-		key: '1FJUJVi6gM-Ese7-RnEyDQHcR1u2uKlnoOFowGEf89vg',
-		callback: function(data, tabletop){
+  Tabletop.init({
+    key: '1FJUJVi6gM-Ese7-RnEyDQHcR1u2uKlnoOFowGEf89vg',
+    callback: function(data, tabletop){
 
-			var map = L.map('map',{
-				center: [38.946286, -92.328677],
-				zoom: 14,
-				maxZoom: 16,
-				minZoom: 14
-			});
+      var map = L.map('map',{
+        center: [38.946286, -92.328677],
+        zoom: 14,
+        maxZoom: 16,
+        minZoom: 14
+      });
 
-			L.tileLayer('http://{s}.tile.openstreetmap.com/{z}/{x}/{y}.png', {
-				attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-					subdomians: 'abcd',
-			}).addTo(map);
+      L.tileLayer('http://{s}.tile.openstreetmap.com/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+          subdomians: 'abcd',
+      }).addTo(map);
 
-			var markers = new L.MarkerClusterGroup({
-				spiderfyOnMaxZoom: true,
-				spiderfyDistanceMultiplier: 4,
-				showCoverageOnHover: false,
+      var markers = new L.MarkerClusterGroup({
+        spiderfyOnMaxZoom: true,
+        spiderfyDistanceMultiplier: 4,
+        showCoverageOnHover: false,
 
-			});
+      });
 
-			for (var i=0; i<data.length; i++) {
+      for (var i=0; i<data.length; i++) {
 
-				var lat = data[i].Lat;
-				var lon = data[i].Lon;
+        var lat = data[i].Lat;
+        var lon = data[i].Lon;
 
 // Delete this dummy URL and get a proper one in, for users with no image
-				if (data[i].Image == "") {
-					data[i].Image = 'http://concentricsky.com/static/img/no-user-photo.png'
-				}
-				console.log(data[i].Image)
-				var marker_face_icon = L.icon({
-					iconUrl: data[i].Image,
-					iconSize: [40, 40],
-					iconAnchor: [20, 20]
-				});
+        if (data[i].Image == "") {
+          data[i].Image = 'http://concentricsky.com/static/img/no-user-photo.png'
+        }
+        console.log(data[i].Image)
+        var marker_face_icon = L.icon({
+          iconUrl: data[i].Image,
+          iconSize: [40, 40],
+          iconAnchor: [20, 20]
+        });
 
-				var marker = L.marker([lat, lon], {
-							title: null,
-							icon: marker_face_icon
-						 });
+        var marker = L.marker([lat, lon], {
+              title: null,
+              icon: marker_face_icon
+             });
 
-				marker.Story = data[i].Story;
-				marker.Soundcloud = data[i].Soundcloud;
-				marker.Name = data[i].Name;
-				marker.Place = data[i].Place;
-			
-				marker.on('click', function(e) {
-					var text = this.Story;
-					var sc = this.Soundcloud;
-					var my_html = '<li class="list_item">'+text+'</li><li>'+sc+'</li>';
-					$('#list').html(my_html);
-				});
-				
-				markers.addLayer(marker);
-			}
+        marker.Image = data[i].Image;
+        marker.Story = data[i].Story;
+        marker.Soundcloud = data[i].Soundcloud;
+        marker.Name = data[i].Name;
+        marker.Place = data[i].Place;
+      
+        marker.on('click', function(e) {
+          var text = this.Story;
+          var sc = this.Soundcloud;
+          var my_html = '<li class="list_item">'+text+'</li><li>'+sc+'</li>';
+          $('#list').html(my_html);
+        });
+        
+        markers.addLayer(marker);
+      }
 
-			markers.on('clusterclick', function(a){
+      markers.on('clusterclick', function(a){
 
-				var markers = a.layer.getAllChildMarkers();
-				$('#list').html('');
-				var location; 
-				$.each(markers, function(index, marker){
-					location = this.Place
-					$('#list').append('<li class="list_item">'+this.Name+'</li>')
-				});
-				$('#location').html(location)
-				
-			});
+        var markers = a.layer.getAllChildMarkers();
+        $('#stories_list table').html('');
+        var location;
+        $.each(markers, function(index, marker){
+          location = this.Place
+          $('#stories_list table').append('<tr><td><img class="sm_img" src="'+this.Image+'" /></td><td>'+this.Name+'</td></tr>');
+          $('#stories_list table').append('<tr><td colspan="2"><span class="indented">Quote!</span></td></tr>');
+        });
+        $('#corner').html('<h3>'+location+'</h3>')
+        
+      });
 
-			map.addLayer(markers);
-
-		},
-		simpleSheet: true
-	});
+      map.addLayer(markers);
 
 
 
+      	// $('#home_page').show();
+      	// $('#page').hide();
 
-	
+
+    },
+    simpleSheet: true
+  });
+
+
+
+
+  
 
 </script>
 </html>
