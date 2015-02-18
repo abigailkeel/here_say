@@ -22,7 +22,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
   <!--Twitter Follow Button script-->
-  <script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
+  <script src="https://platform.twitter.com/widgets.js"></script>
 
   <!--Instagram Follow Button script-->
   <script>(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src="http://instagramfollowbutton.com/components/instagram/v2/js/ig-follow.js";s.parentNode.insertBefore(g,s);}(document,"script"));</script>
@@ -102,8 +102,10 @@
       
       <div class="panel-body">
         <div class="div_list" id="social_btns">
-          <a class="twitter-follow-button" href="https://twitter.com/heresaykbia" data-show-count="false" data-size="medium" data-lang="en">Follow @heresaykbia</a>
-          <span class="ig-follow" data-id="10c749d" data-count="false" data-size="medium" data-username="true"></span>
+          <div class="in_center">
+            <a href="https://twitter.com/intent/follow?screen_name=heresaykbia"><img src="images/twitter_circle_black-512.png" width="64px" height="64px" alt="Follow on Twitter" /></a>
+            <a href="http://instagram.com/heresaykbia" class="ig-b- ig-b-48"><img src="images/instagram-icon.png" alt="Instagram" width="58px" height="58px" /></a>
+          </div>
         </div>
         <div class="div_list" id="byline"><p>Here Say was created by Abigal Keel, Hope Kirwan and Torie Ross. Web development by Roman Kogulshev.</p></div>
       </div>

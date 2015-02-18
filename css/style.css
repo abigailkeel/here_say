@@ -224,3 +224,8 @@
 a:link, a:hover, a:visited, a:active{
 	color:purple;
 }
+
+.in_center {
+	width: 130px;
+	margin: 0 auto;
+}
