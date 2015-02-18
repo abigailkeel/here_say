@@ -136,10 +136,10 @@
 
 
 #left_nav {
-	left: -170;
-	top: 200px;
-	height: 200px;
-	width: 200px;
+	left: -215px;
+	top: 30%;
+	height: 60%;
+	width: 250px;
 	border-radius: 0 10px 10px 0;
 	transition: all 0.5s ease;
 }
@@ -166,4 +166,45 @@
 
 .full_width{
 	width: 100%;
+}
+
+
+#left_nav_title {
+	position: absolute;
+	border: none;
+	top: 43%;
+	right: -45px;
+	font-weight: bold;
+	text-decoration: underline;
+	cursor: default;
+}
+
+
+.rotate {
+	/* Safari */
+	-webkit-transform: rotate(-90deg);
+	/* Firefox */
+	-moz-transform: rotate(-90deg);
+	/* IE */
+	-ms-transform: rotate(-90deg);
+	/* Opera */
+	-o-transform: rotate(-90deg);
+	/* Internet Explorer */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.relative_c {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+#left_stories_list {
+	height: 100%;
+	margin-right: 25px;
+	overflow-y: scroll; 
+}
+
+#left_stories_list ul li {
+	list-style: none;
 }

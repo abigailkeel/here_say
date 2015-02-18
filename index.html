@@ -34,11 +34,14 @@
 <body>
 
   <div id="left_nav" class="absolute">
-    <a href="#" class='test'>MU</a><br />
-    <a href="#" class='test'>Library</a><br />
+    <div class='relative_c'>
+      <div id="left_nav_title" class="rotate">Browse locations</div>
+      <div id="left_stories_list">
+        <ul>
+        </ul>
+      </div>
+    </div>
   </div>
-
-
 
 
   <div id="page" class="page absolute">
@@ -115,7 +118,7 @@
   $('#left_nav').hover(function(){
     $(this).css('left','-5px');
   }, function(){
-    $(this).css('left','-170px');
+    $(this).css('left','-215px');
   });
 
 
@@ -130,10 +133,10 @@
         minZoom: 12
       });
 
-        L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
-  attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  subdomains: 'abcd'
-}).addTo(map);
+      L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
+        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        subdomains: 'abcd'
+      }).addTo(map);
 
       var markers = new L.MarkerClusterGroup({
         removeOutsideVisibleBounds: false,
@@ -144,7 +147,14 @@
 
       });
 
+      list_of_locations = [];
       for (var i=0; i<data.length; i++) {
+
+        var location_name = data[i].Place;
+        if (!(list_of_locations.indexOf(location_name) >= 0)) {
+          list_of_locations.push(location_name);
+        }
+
 
         var lat = data[i].Lat;
         var lon = data[i].Lon;
@@ -185,8 +195,9 @@
         markers.addLayer(marker);
       }
 
-      markers.on('clustercreate', function(a){
-       
+      // Create left side menu:
+      $.each(list_of_locations, function(i, loc){
+        $('#left_stories_list ul').append('<li><a href="#" class="left_menu_link">'+loc+'</a></li>');
       });
 
       markers.on('clusterclick', function(a){
@@ -202,7 +213,7 @@
         $('#stories_list table').html('');
         var location;
         $.each(markers, function(index, marker){
-          location = this.Place
+          location = this.Place;
           $('#stories_list table').append('<tr><td><img class="sm_img round_image" src="'+this.Image+'" /></td><td><a href="#" class="link_to_story">'+this.Name+'</a></td></tr>');
           $('#stories_list table').append('<tr><td colspan="2"><span class="indented"><i>'+this.Quote+'</i></span></td></tr>');
 
@@ -224,7 +235,7 @@
       });
 
 
-      $('.test').click(function(){
+      $('.left_menu_link').click(function(){
 
         var name = $(this).text();
         var parent;
