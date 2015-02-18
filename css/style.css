@@ -3,6 +3,25 @@
 	height: 100%;
 	position: absolute;
 }
+/*Overriding bootstrap styles*/
+.panel-body{
+	padding: 5px;
+}
+
+.panel{
+	margin-bottom: 12px;
+}
+
+.table tbody tr td, .table tbody tr th{
+	padding: 3px;
+}
+
+.panel-heading{
+	padding: 5px;
+}
+
+
+
 
 #heresay_logo_img {
 	float: left;
@@ -41,17 +60,18 @@
 	position: absolute;
 	z-index: 2;
 	background: #fff;
-	padding: 20px;
+	padding: 6px;
 	border-radius: 10px;
 	border: 1px solid lightgrey;
 }
 
 .page {
-	right: 30px;
-	top: 30px;
+	right: 10px;
+	top: 10px;
 	min-height: 300px;
-	width: 35%;
+	width: 420px;
 	min-width: 300px;
+	border: 2px solid #000;
 }
 
 .container {
@@ -83,6 +103,7 @@
 
 .indented {
 	margin-left: 30px;
+	color: #7B7B7B;
 }
 
 .round_image {
@@ -90,7 +111,8 @@
 }
 
 .stories_container {
-	height: 400px;
+	height: 100%;
+	max-height: 340px;
 	overflow-y: scroll;
 }
 

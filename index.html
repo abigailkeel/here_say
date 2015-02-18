@@ -45,7 +45,7 @@
 
     <div class="panel panel-default">
 
-      <div class="panel-heading floated_left">
+      <div class="panel-heading floated_left full_width">
         <img id="heresay_logo_img" src="images/logo1.jpeg" /><span id="corner"><h3 id="corner_text" class='big_margin_top'></h3></span>
       </div>
 
@@ -75,11 +75,7 @@
             </div>
           </div>
 
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <a class="btn btn-primary btn-block btn-lg" id='back_home' href="#" role="button">Back to Homepage</a>
-            </div>
-          </div>    
+         <a class="btn btn-primary btn-block btn-lg" id='back_home' href="#" role="button">All Stories</a> 
 
         </div>
 
@@ -105,7 +101,7 @@
           <a class="twitter-follow-button" href="https://twitter.com/heresaykbia" data-show-count="false" data-size="medium" data-lang="en">Follow @heresaykbia</a>
           <span class="ig-follow" data-id="10c749d" data-count="false" data-size="medium" data-username="true"></span>
         </div>
-        <div class="div_list" id="byline">Byline text</div>
+        <div class="div_list" id="byline"><p>Here Say was created by Abigal Keel, Hope Kirwan and Torie Ross. Web development by Roman Kogulshev.</p></div>
       </div>
     </div>
   </div>
@@ -134,10 +130,10 @@
         minZoom: 12
       });
 
-      L.tileLayer('http://{s}.tile.openstreetmap.com/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-          subdomians: 'abcd',
-      }).addTo(map);
+        L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
+  attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  subdomains: 'abcd'
+}).addTo(map);
 
       var markers = new L.MarkerClusterGroup({
         removeOutsideVisibleBounds: false,
@@ -175,6 +171,7 @@
         marker.Soundcloud = data[i].Soundcloud;
         marker.Name = data[i].Name;
         marker.Place = data[i].Place;
+        marker.Quote = data[i].Quote;
       
         marker.on('click', function(e) {
           var text = this.Story;
@@ -189,12 +186,10 @@
       }
 
       markers.on('clustercreate', function(a){
-        console.log(a);
+       
       });
 
       markers.on('clusterclick', function(a){
-
-        console.log(a);
 
         $('#page').show();
         $('#home_page').hide();
@@ -208,8 +203,13 @@
         var location;
         $.each(markers, function(index, marker){
           location = this.Place
-          $('#stories_list table').append('<tr><td><img class="sm_img round_image" src="'+this.Image+'" /></td><td>'+this.Name+'</td></tr>');
-          $('#stories_list table').append('<tr><td colspan="2"><span class="indented">Quote!</span></td></tr>');
+          $('#stories_list table').append('<tr><td><img class="sm_img round_image" src="'+this.Image+'" /></td><td><a href="#" class="link_to_story">'+this.Name+'</a></td></tr>');
+          $('#stories_list table').append('<tr><td colspan="2"><span class="indented"><i>'+this.Quote+'</i></span></td></tr>');
+
+          $( $('.link_to_story')[$('.link_to_story').length-1] ).click(function(){
+            marker.fire('click');
+          });
+
         });
         $('#corner_text').html(location)
         
