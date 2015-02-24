@@ -14,6 +14,7 @@
 
 .table tbody tr td, .table tbody tr th{
 	padding: 3px;
+	border-top: none; 
 }
 
 .panel-heading{
@@ -21,16 +22,31 @@
 }
 
  .btn-primary, .btn-primary:active, .btn-primary:focus, .btn-primary:hover{
-	background-color: #8E8E8E;
-	border-color: #222;
+	background-color: #713774;
+	border-color: lightgrey;
 	border-width: 3px;
+	border-radius: 5px;
+}
 
+
+
+.gray{
+	color: #fff;
+	background-color: #004284;
+	border-radius: 4px;
+	margin: 2px;
+	padding: 10px;
+}
+
+#gray{
+	color: grey;
 }
 
 
 #heresay_logo_img {
 	float: left;
 	width: 40%;
+	cursor: pointer;
 }
 
 #heresay_logo_big {
@@ -61,13 +77,24 @@
 	border-radius: 4px;
 }
 
+#corner_text{
+	color: #713774;
+}
+
 .absolute {
 	position: absolute;
 	z-index: 2;
 	background: #fff;
 	padding: 6px;
 	border-radius: 10px;
-	border: 1px solid lightgrey;
+	border: 3px solid lightgrey;
+}
+
+.absolute_left {
+	position: absolute;
+	z-index: 2;
+	background: #fff;
+	border: 2px solid lightgrey;
 }
 
 .page {
@@ -76,7 +103,7 @@
 	min-height: 300px;
 	width: 420px;
 	min-width: 300px;
-	border: 2px solid #000;
+	border: 3px solid lightgrey;
 }
 
 .container {
@@ -112,6 +139,7 @@
 
 .indented {
 	margin-left: 30px;
+	margin-bottom: 10px;
 	color: #7B7B7B;
 }
 
@@ -128,12 +156,12 @@
 /*Rewriting Markercluster styles*/
 
 .marker-cluster-small div {
-	background-color: rgba(150, 48, 177, 0.6);
+	background-color: rgba(113,55,116,0.7);
 
 }
 
 .marker-cluster-small {
-	background-color: rgba(150, 48, 177, 0.6);
+	background-color: rgba(113,55,116,0.7);
 }
 
 #desc {
@@ -151,6 +179,7 @@
 	height: 60%;
 	width: 250px;
 	border-radius: 0 10px 10px 0;
+	background-color: #713774;
 	transition: all 0.5s ease;
 }
 
@@ -184,6 +213,7 @@
 	border: none;
 	top: 43%;
 	right: -70px;
+	color: #fff;
 	font-weight: bold;
 	text-decoration: underline;
 	cursor: default;
@@ -208,24 +238,46 @@
 	height: 100%;
 	position: relative;
 	margin-left: -25;
-	padding-top: 15px;
+	background-color: #713774;
+	border: 2px #713774;
 }
 
 #left_stories_list {
 	height: 100%;
-	margin-right: 25px;
+	margin-right: 10px;
 	overflow-y: scroll; 
+	background-color: #fff;
+	border: 2px;
+	border-color: #713774;
+
+	
 }
 
 #left_stories_list ul li {
 	list-style: none;
 }
 
+#left_stories_list ol, ul {
+	margin-top: 18px
+}
+
 a:link, a:hover, a:visited, a:active{
-	color:purple;
+	color: #004284;
 }
 
 .in_center {
-	width: 130px;
+	width: 138px;
 	margin: 0 auto;
+}
+
+.text_box{
+	font-size: 12px;
+}
+
+.story_text{
+	margin: 10;
+	font-size: 12;
+	font-style: italic;
+	font-color: darkgrey;
+
 }

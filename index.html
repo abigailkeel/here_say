@@ -33,7 +33,7 @@
 </head>
 <body>
 
-  <div id="left_nav" class="absolute">
+  <div id="left_nav" class="absolute_left">
     <div class='relative_c'>
       <div id="left_nav_title" class="rotate">Browse locations</div>
       <div id="left_stories_list">
@@ -58,7 +58,7 @@
           <div id="desc">
 
             <div class="panel panel-default">
-              <div class="panel-body">
+              <div class="panel-body gray">
                 <h5>Location description is here</h5>
               </div>
             </div>
@@ -68,7 +68,6 @@
 
 
         <div id="main_body" class="div_list">
-
           <div class="panel panel-default">
             <div class="panel-body stories_container">
               <h3>Stories</h3>
@@ -78,6 +77,7 @@
             </div>
           </div>
 
+          
          <button class="btn btn-primary btn-block btn-lg" id='back_home' role="button">All Stories</button> 
 
         </div>
@@ -92,22 +92,31 @@
 
 
   <div id="home_page" class="page absolute">
-  	<div class="div_list" id="kbia_logo"><img src="http://mediad.publicbroadcasting.net/p/kbia/files/201411/logo.png" /></div>
+  	<div class="div_list" id="kbia_logo"><img src="http://mediad.publicbroadcasting.net/p/kbia/files/201411/logo.png"/></div>
   	<div class="div_list" id="heresay_logo">
   	  <img id="heresay_logo_big" src="images/logo1.jpeg" />
   	</div>
 
     <div class="panel panel-default floated_left full_width">
-      <div class="panel-heading"><span id="project_desc"><h5>Here Say is a project in community storytelling. We go to public spaces and ask people to tell us true stories. Every new place has a new prompt--so at the farmer's market, we ask for stories about food, but at the court house, we ask for stories about justice. It's your stories, told here.</h5><p>Explore this map to find stories from places around our area. Click on the location to see the people who told stories there. Then click on a person to hear their story or read a transcript.</p><p>Here Say airs on KBIA 91.3 fm on Tuesday afternoons and Wednesday mornings. Listen to new stories every week on the radio or find all our stories here.</p></span></div>
+      <div class="panel panel-default"><span id="project_desc">
+       <div class="panel-body gray center">
+          <h4>Here Say is a project in community storytelling.</h4>
+        </div>
+        </div>
+       <p class= "lead center">Click on a location to see the people who told stories there. Click on a person to hear their story or read a transcript.</p><p class="center">Here Say airs on KBIA 91.3 fm on Tuesday afternoons and Wednesday mornings. Listen to new stories every week on the radio or find all our stories here.</p>
+      
+      
+       
       
       <div class="panel-body">
         <div class="div_list" id="social_btns">
           <div class="in_center">
-            <a href="https://twitter.com/intent/follow?screen_name=heresaykbia"><img src="images/twitter_circle_black-512.png" width="64px" height="64px" alt="Follow on Twitter" /></a>
-            <a href="http://instagram.com/heresaykbia" class="ig-b- ig-b-48"><img src="images/instagram-icon.png" alt="Instagram" width="58px" height="58px" /></a>
+            <a href="https://twitter.com/intent/follow?screen_name=heresaykbia"><img src="images/twitter_circle_black-512.png" width="43px" height="43px" alt="Follow on Twitter" /></a>
+            <a href="http://instagram.com/heresaykbia" class="ig-b- ig-b-48"><img src="images/instagram-icon.png" alt="Instagram" width="40px" height="40px" /></a>
+             <a href="https://soundcloud.com/heresay" class="ig-b- ig-b-48"><img src="images/souncloudicon.png" alt="Soundcloud" width="40px" height="40px" /></a>
           </div>
         </div>
-        <div class="div_list" id="byline"><p>Here Say was created by Abigal Keel, Hope Kirwan and Torie Ross. Web development by Roman Kogulshev.</p></div>
+        <div class="div_list center" id="byline"><small id="gray">Here Say was created by Abigail Keel, Hope Kirwan and Torie Ross. Web development by Abigail Keel.</small></div>
       </div>
     </div>
   </div>
@@ -164,7 +173,7 @@
 
 // Delete this dummy URL and get a proper one in, for users with no image
         if (data[i].Image == "") {
-          data[i].Image = 'http://concentricsky.com/static/img/no-user-photo.png'
+          data[i].Image = 'images/heresay_logo_img.jpeg'
         }
 
         var marker_face_icon = L.icon({
@@ -185,14 +194,19 @@
         marker.Name = data[i].Name;
         marker.Place = data[i].Place;
         marker.Quote = data[i].Quote;
+        marker.Description = data[i].Description;
+        
       
         marker.on('click', function(e) {
           var text = this.Story;
           var sc = this.Soundcloud;
+          var sc_text = '<h3>Listen</h3>' + sc 
+          var html_text = '<h3>Story</h3>' + '<p class= "story_text">' + text + '</p>'
 
           $('#corner_text').html(this.Name);
-          $( $("#main_body .panel-body")[0] ).html(sc)
-
+          $( $("#main_body .panel-body")[0] ).html(sc_text);
+          $( $("#main_body .panel-body")[0] ).append(html_text);
+          
         });
         
         markers.addLayer(marker);
@@ -202,6 +216,8 @@
       $.each(list_of_locations, function(i, loc){
         $('#left_stories_list ul').append('<li><a href="#" class="left_menu_link">'+loc+'</a></li>');
       });
+
+
 
       markers.on('clusterclick', function(a){
 
@@ -215,18 +231,25 @@
         var markers = a.layer.getAllChildMarkers();
         $('#stories_list table').html('');
         var location;
+        var desc;
         $.each(markers, function(index, marker){
           location = this.Place;
+          desc = this.Description;
           $('#stories_list table').append('<tr><td style="height: 31px; width: 56px;"><img class="sm_img round_image" src="'+this.Image+'" /></td><td><a href="#" class="link_to_story">'+this.Name+'</a></td></tr>');
           $('#stories_list table').append('<tr><td colspan="2"><span class="indented"><i>'+this.Quote+'</i></span></td></tr>');
+
 
           $( $('.link_to_story')[$('.link_to_story').length-1] ).click(function(){
             marker.fire('click');
           });
 
+
         });
-        $('#corner_text').html(location)
-        
+        $('#corner_text').html(location);
+         console.log(desc)    
+        $('.gray').html(desc);
+
+
       });
 
       map.addLayer(markers);
@@ -234,9 +257,13 @@
       $('#back_home').click(function(){
         $('#page').hide();
         $('#home_page').show();
+        $('.gray').html('<h4>Here Say is a project in community storytelling.</h4>');
         map.fitBounds( markers.getBounds() );
       });
 
+      $('#heresay_logo_img').click(function(){
+        $('#back_home').trigger('click')
+      });
 
       $('.left_menu_link').click(function(){
 
