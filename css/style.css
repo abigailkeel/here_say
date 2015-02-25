@@ -12,6 +12,10 @@
 	margin-bottom: 12px;
 }
 
+.table{
+	width: 90%;
+}
+
 .table tbody tr td, .table tbody tr th{
 	padding: 3px;
 	border-top: none; 
@@ -50,7 +54,7 @@
 }
 
 #heresay_logo_big {
-	width: 80%;
+	width: 60%;
 	margin: 0 auto;
 	display: block;
 }
@@ -58,7 +62,7 @@
 #kbia_logo img {
 	margin: 0 auto;
 	display: block;
-	width: 40%;
+	width: 25%;
 }
 
 .floated_left {
@@ -141,6 +145,8 @@
 	margin-left: 30px;
 	margin-bottom: 10px;
 	color: #7B7B7B;
+	line-height: 1.2;
+	border-bottom: 3px;
 }
 
 .round_image {
@@ -155,12 +161,12 @@
 
 /*Rewriting Markercluster styles*/
 
-.marker-cluster-small div {
+.marker-cluster-small div, .marker-cluster-medium div, .marker-cluster-large {
 	background-color: rgba(113,55,116,0.7);
 
 }
 
-.marker-cluster-small {
+.marker-cluster-small, .marker-cluster-medium, .marker-cluster-large {
 	background-color: rgba(113,55,116,0.7);
 }
 
@@ -187,14 +193,14 @@
 @media (max-width: 800px) {
 
 	.page {
-		margin-top: 170px; 
+		margin-top: 270px; 
 		right: 0;
 		bottom: 0;
 		width: 100%;
 	}
 
 	#map {
-		height: 200px;
+		height: 300px;
 	}
 
 	#left_nav {
@@ -215,7 +221,6 @@
 	right: -70px;
 	color: #fff;
 	font-weight: bold;
-	text-decoration: underline;
 	cursor: default;
 }
 
@@ -280,4 +285,16 @@ a:link, a:hover, a:visited, a:active{
 	font-style: italic;
 	font-color: darkgrey;
 
+}
+
+.leaflet-top, .leaflet-bottom {
+	z-index: 1;
+}
+
+#heresay_small {
+	float: left;
+}
+
+#heresay_logo_big {
+	width: 90%;
 }

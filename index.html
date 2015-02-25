@@ -49,7 +49,7 @@
     <div class="panel panel-default">
 
       <div class="panel-heading floated_left full_width">
-        <img id="heresay_logo_img" src="images/logo1.jpeg" /><span id="corner"><h3 id="corner_text" class='big_margin_top'></h3></span>
+        <img id="heresay_small" src="images/logo_small.gif" /><span id="corner"><h3 id="corner_text" class='big_margin_top'></h3></span>
       </div>
 
       <div class="panel-body">
@@ -94,7 +94,7 @@
   <div id="home_page" class="page absolute">
   	<div class="div_list" id="kbia_logo"><img src="http://mediad.publicbroadcasting.net/p/kbia/files/201411/logo.png"/></div>
   	<div class="div_list" id="heresay_logo">
-  	  <img id="heresay_logo_big" src="images/logo1.jpeg" />
+  	  <img id="heresay_logo_big" src="images/logo_big.jpeg" />
   	</div>
 
     <div class="panel panel-default floated_left full_width">
@@ -116,7 +116,7 @@
              <a href="https://soundcloud.com/heresay" class="ig-b- ig-b-48"><img src="images/souncloudicon.png" alt="Soundcloud" width="40px" height="40px" /></a>
           </div>
         </div>
-        <div class="div_list center" id="byline"><small id="gray">Here Say was created by Abigail Keel, Hope Kirwan and Torie Ross. Web development by Abigail Keel.</small></div>
+        <div class="div_list center" id="byline"><small id="gray">Here Say was created by Abigail Keel, Hope Kirwan and Torie Ross. Web development by Abigail Keel and Roman Kolgushev/<a href= "http://www.columbiamissourian.com" target='_blank'>Columbia Missourian</a></small></div>
       </div>
     </div>
   </div>
@@ -170,11 +170,16 @@
 
         var lat = data[i].Lat;
         var lon = data[i].Lon;
+        console.log(lat, lon)
+
 
 // Delete this dummy URL and get a proper one in, for users with no image
         if (data[i].Image == "") {
-          data[i].Image = 'images/heresay_logo_img.jpeg'
+          var host = window.location.href;
+          data[i].Image = host + '/images/no_image.png'
         }
+
+       
 
         var marker_face_icon = L.icon({
           iconUrl: data[i].Image,
